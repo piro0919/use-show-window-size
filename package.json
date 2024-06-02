@@ -26,7 +26,7 @@
   "main": "dist/index.js",
   "module": "dist/index.js",
   "name": "use-show-window-size",
-  "private": true,
+  "private": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/piro0919/use-show-window-size.git"
