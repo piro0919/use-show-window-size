@@ -8,7 +8,7 @@ export type LayoutProps = {
 
 export default function Layout({ children }: LayoutProps): JSX.Element {
   useShowWindowSize({
-    disable: process.env.NODE_ENV === "production",
+    // disable: process.env.NODE_ENV === "production",
   });
 
   return <>{children}</>;
