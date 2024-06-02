@@ -13,7 +13,7 @@ use-show-window-size shows window size during development.
 
 ## Example
 
-Example
+[Example](https://use-show-window-size.kk-web.link/)
 
 ## Usage
 
