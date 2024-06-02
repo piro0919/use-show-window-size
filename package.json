@@ -1,24 +1,43 @@
 {
-  "name": "use-show-window-size",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+  "author": "piro <piro.haniwa@gmail.com> (https://kk-web.link/)",
+  "bugs": {
+    "url": "https://github.com/piro0919/use-show-window-size/issues"
   },
   "dependencies": {
-    "react": "^18",
-    "react-dom": "^18",
-    "next": "14.2.3"
+    "usehooks-ts": "3.1.0"
   },
   "devDependencies": {
-    "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
-    "eslint-config-next": "14.2.3"
-  }
+    "eslint-config-next": "14.2.3",
+    "next": "14.2.3",
+    "react": "^18",
+    "react-dom": "^18",
+    "typescript": "^5"
+  },
+  "keywords": [
+    "hooks",
+    "react",
+    "useShowWindowSize"
+  ],
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "name": "use-show-window-size",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/piro0919/use-show-window-size.git"
+  },
+  "scripts": {
+    "build": "next build",
+    "build:package": "tsc -p tsconfig.gen-dts.json",
+    "dev": "next dev",
+    "lint": "next lint",
+    "start": "next start"
+  },
+  "types": "dist/index.d.ts",
+  "version": "0.0.1"
 }

@@ -1,0 +1,15 @@
+.editorconfig
+.eslintrc.json
+.gitignore
+.next
+.npmignore
+.npmrc
+.vscode
+next-env.d.ts
+next.config.mjs
+node_modules
+package-lock.json
+public
+renovate.json
+src
+tsconfig.json
