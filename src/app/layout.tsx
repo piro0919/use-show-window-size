@@ -1,23 +1,33 @@
-import Layout from "@/components/Layout";
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import type { ReactNode } from "react";
+import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const SITE_URL = "https://use-show-window-size.kkweb.io";
+const TITLE = "use-show-window-size";
+const DESCRIPTION = "React hook that overlays the current viewport size for development.";
 
 export const metadata: Metadata = {
-  title: "use-show-window-size",
+  metadataBase: new URL(SITE_URL),
+  title: TITLE,
+  description: DESCRIPTION,
+  icons: { icon: "/icon.svg" },
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    url: SITE_URL,
+    title: TITLE,
+    description: DESCRIPTION,
+    siteName: TITLE,
+  },
+  twitter: { card: "summary", title: TITLE, description: DESCRIPTION },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export const viewport: Viewport = { themeColor: "#0f172a" };
+
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="ja">
-      <body className={inter.className}>
-        <Layout>{children}</Layout>
-      </body>
+    <html lang="en">
+      <body>{children}</body>
     </html>
   );
 }

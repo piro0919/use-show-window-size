@@ -1,43 +1,90 @@
 {
+  "name": "use-show-window-size",
+  "version": "1.0.0",
+  "description": "React hook that overlays the current viewport size for development.",
+  "keywords": [
+    "react",
+    "hook",
+    "window-size",
+    "viewport",
+    "responsive",
+    "dev-tools"
+  ],
+  "license": "MIT",
   "author": "piro <piro.haniwa@gmail.com> (https://kk-web.link/)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/piro0919/use-show-window-size.git"
+  },
+  "homepage": "https://use-show-window-size.kkweb.io",
   "bugs": {
     "url": "https://github.com/piro0919/use-show-window-size/issues"
   },
-  "dependencies": {
-    "usehooks-ts": "3.1.1"
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "build:lib": "tsup",
+    "build:lib:watch": "tsup --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "pnpm run lint && pnpm run typecheck && pnpm run test && pnpm run build:lib"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
   },
   "devDependencies": {
-    "@types/node": "^22.0.0",
+    "@eslint/js": "^9.17.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
+    "@types/node": "25.8.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
-    "eslint": "^9.0.0",
-    "eslint-config-next": "15.3.2",
-    "next": "15.3.2",
+    "@typescript-eslint/eslint-plugin": "^8.18.0",
+    "@typescript-eslint/parser": "^8.18.0",
+    "babel-plugin-react-compiler": "^1.0.0",
+    "eslint": "^9.17.0",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "jsdom": "^25.0.1",
+    "lefthook": "^2.0.13",
+    "next": "^16.0.0",
+    "prettier": "^3.4.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "typescript": "^5"
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
   },
-  "keywords": [
-    "hooks",
-    "react",
-    "useShowWindowSize"
-  ],
-  "license": "MIT",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "name": "use-show-window-size",
-  "private": false,
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/piro0919/use-show-window-size.git"
+  "engines": {
+    "node": ">=20"
   },
-  "scripts": {
-    "build": "next build",
-    "build:package": "tsc -p tsconfig.gen-dts.json",
-    "dev": "next dev",
-    "lint": "next lint",
-    "start": "next start"
-  },
-  "types": "dist/index.d.ts",
-  "version": "0.0.1"
+  "packageManager": "pnpm@10.27.0",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "lefthook",
+      "sharp"
+    ]
+  }
 }

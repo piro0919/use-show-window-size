@@ -1,49 +1,55 @@
 # use-show-window-size
 
-use-show-window-size shows window size during development.
+> React hook that overlays the current viewport size for development.
 
-## Features
+[![npm](https://img.shields.io/npm/v/use-show-window-size.svg)](https://www.npmjs.com/package/use-show-window-size)
+[![license](https://img.shields.io/npm/l/use-show-window-size.svg)](./LICENSE)
 
-- TypeScript support
-- SSR support
+Drops a small fixed badge in a corner of your page showing `<width>px × <height>px`. Handy while building responsive layouts. Dependency-free; updates on `resize`.
 
-## Installation
+🌐 **Demo:** <https://use-show-window-size.kkweb.io>
 
-`npm i --save use-show-window-size`
+## Install
 
-## Example
+```bash
+npm install use-show-window-size
+```
 
-[Example](https://use-show-window-size.kk-web.link/)
+Requires React 18 or 19.
 
 ## Usage
 
-### Next.js
-
 ```tsx
 "use client";
-import useShowWindowSize from "@/hooks/useShowWindowSize";
-import { ReactNode } from "react";
 
-export type LayoutProps = {
-  children: ReactNode;
-};
+import { useShowWindowSize } from "use-show-window-size";
 
-export default function Layout({ children }: LayoutProps): JSX.Element {
+export function DevLayout({ children }: { children: React.ReactNode }) {
   useShowWindowSize({
     disable: process.env.NODE_ENV === "production",
+    position: "bottom-right",
   });
 
   return <>{children}</>;
 }
 ```
 
-### Arguments
+The hook also returns the current size:
 
-| Argument |             Type              | Optional |
-| -------- | :---------------------------: | :------: |
-| disable  |            Boolean            |    ✓     |
-| style    | Partial\<CSSStyleDeclaration> |    ✓     |
+```tsx
+const { width, height } = useShowWindowSize();
+```
 
-### Return
+## API
 
-`void`
+| Option     | Type                                                           | Default       | Description                                   |
+| ---------- | -------------------------------------------------------------- | ------------- | --------------------------------------------- |
+| `disable`  | `boolean`                                                      | `false`       | Skip mounting / updating.                     |
+| `position` | `"top-right" \| "top-left" \| "bottom-right" \| "bottom-left"` | `"top-right"` | Which corner the badge attaches to.           |
+| `style`    | `CSSProperties`                                                | —             | Merged into the badge element's inline style. |
+
+Returns `{ width: number; height: number }`.
+
+## License
+
+MIT

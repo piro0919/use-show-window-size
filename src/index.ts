@@ -3,4 +3,4 @@ export {
   type UseShowWindowSizeOptions,
   type ShowWindowSizePosition,
   type WindowSize,
-} from "./useShowWindowSize";
+} from "./hooks/useShowWindowSize";
