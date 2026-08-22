@@ -16,73 +16,67 @@ export default function Home() {
   const size = useShowWindowSize({ position, disable });
 
   return (
-    <div className="container">
-      <h1 className="title">use-show-window-size</h1>
-      <p className="subtitle">
-        React hook that overlays the current viewport size in a corner. Look at the small badge
-        showing the size — try resizing this window or your dev tools panel.
+    /* ページそのものを寸法を測る面にする。縁に目盛りを引き、
+       いまの大きさを中央に大きく出す。窓を動かすと全部が動く */
+    <main className="stage">
+      <div className="ruler ruler-top" />
+      <div className="ruler ruler-left" />
+
+      <div className="readout">
+        <span className="readout-num">{size.width}</span>
+        <span className="readout-x">×</span>
+        <span className="readout-num">{size.height}</span>
+      </div>
+
+      <h1 className="name">use-show-window-size</h1>
+      <p className="lead">
+        React hook that overlays the current viewport size in a corner. The badge in the corner is
+        the hook. Everything else on this page is just the same numbers, larger.
       </p>
 
-      <section className="section">
-        <h2>Position</h2>
-        <p>Choose which corner the badge attaches to.</p>
-        <div className="controls">
-          {POSITIONS.map((p) => (
-            <button
-              key={p}
-              className={`btn ${p === position ? "active" : ""}`}
-              onClick={() => setPosition(p)}
-              type="button"
-            >
-              {p}
-            </button>
-          ))}
-        </div>
-      </section>
-
-      <section className="section">
-        <h2>Disable</h2>
-        <p>
-          Toggle <code>disable</code>. Useful for{" "}
-          <code>process.env.NODE_ENV === &quot;production&quot;</code>.
-        </p>
-        <div className="controls">
+      <div className="row">
+        <span className="row-label">position</span>
+        {POSITIONS.map((p) => (
           <button
-            className={`btn ${disable ? "" : "active"}`}
-            onClick={() => setDisable(false)}
+            className={`chip ${p === position ? "on" : ""}`}
+            key={p}
+            onClick={() => setPosition(p)}
             type="button"
           >
-            enabled
+            {p}
           </button>
-          <button
-            className={`btn ${disable ? "active" : ""}`}
-            onClick={() => setDisable(true)}
-            type="button"
-          >
-            disabled
-          </button>
-        </div>
-      </section>
+        ))}
+      </div>
 
-      <section className="section">
-        <h2>Return value</h2>
-        <p>
-          The hook also returns the current size as <code>{"{ width, height }"}</code> for
-          programmatic use.
-        </p>
-        <div className="size">
-          {size.width}px × {size.height}px
-        </div>
-      </section>
+      <div className="row">
+        <span className="row-label">disable</span>
+        <button
+          className={`chip ${disable ? "" : "on"}`}
+          onClick={() => setDisable(false)}
+          type="button"
+        >
+          false
+        </button>
+        <button
+          className={`chip ${disable ? "on" : ""}`}
+          onClick={() => setDisable(true)}
+          type="button"
+        >
+          true
+        </button>
+      </div>
 
-      <a
-        className="github-link"
-        href="https://github.com/piro0919/use-show-window-size"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        GitHub →
-      </a>
-    </div>
+      <div className="foot">
+        <code className="install">npm i use-show-window-size</code>
+        <a
+          className="github-link"
+          href="https://github.com/piro0919/use-show-window-size"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          GitHub →
+        </a>
+      </div>
+    </main>
   );
 }
