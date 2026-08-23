@@ -1,3 +1,6 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
+import { cwd } from "node:process";
 import { ImageResponse } from "next/og";
 
 export const alt = "use-show-window-size";
@@ -9,7 +12,11 @@ export const contentType = "image/png";
 const TITLE = "use-show-window-size";
 const DESCRIPTION = "React hook that shows the current window size while you develop.";
 
-export default function Image() {
+export default async function Image() {
+  /* 見出しの書体はサイトと同じ JetBrains Mono。使う文字だけに絞ったものを
+     同梱している。文言を変えたら assets/README.md の手順で作り直す */
+  const font = await readFile(join(cwd(), "assets/JetBrainsMono-800-subset.ttf"));
+
   return new ImageResponse(
     <div
       style={{
@@ -127,6 +134,9 @@ export default function Image() {
         </div>
       </div>
     </div>,
-    size,
+    {
+      ...size,
+      fonts: [{ data: font, name: "JetBrains Mono", style: "normal", weight: 800 }],
+    },
   );
 }

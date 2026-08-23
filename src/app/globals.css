@@ -187,3 +187,11 @@ body {
 .github-link:hover {
   color: var(--accent);
 }
+
+/* 見出しの書体 */
+.readout-num {
+  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+}
+.name {
+  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+}
