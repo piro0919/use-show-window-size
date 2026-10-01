@@ -50,6 +50,14 @@ const { width, height } = useShowWindowSize();
 
 Returns `{ width: number; height: number }`.
 
+### `style`
+
+Pass it inline if you like — it is compared by value, so `style={{ ... }}` does not re-run anything on each render. Numbers follow React's rules: `fontSize: 14` becomes `14px`, while unitless properties such as `opacity`, `zIndex` and `lineHeight` are left as-is.
+
+### Several instances
+
+There is only ever one badge on the page. It appears when the first enabled hook mounts and is removed when the last one unmounts or is disabled. When more than one is mounted, the badge uses the `position` and `style` of the instance that mounted or changed its options most recently; if that one unmounts, the badge falls back to the next most recent.
+
 ## License
 
 MIT

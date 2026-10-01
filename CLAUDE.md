@@ -24,7 +24,8 @@ src/
 ├── index.ts
 ├── hooks/useShowWindowSize/
 │   ├── index.ts
-│   └── useShowWindowSize.ts        # "use client"
+│   ├── useShowWindowSize.ts        # "use client"
+│   └── overlay.ts                  # shared badge node, ref-counted
 └── app/                            # Next.js demo
     ├── layout.tsx
     ├── page.tsx
@@ -43,7 +44,7 @@ const size = useShowWindowSize({
 });
 ```
 
-- Appends a fixed-position `<div id="use-show-window-size">` to `document.body` while the hook is mounted.
+- Appends one fixed-position `<div id="use-show-window-size">` to `document.body`, shared by every mounted instance; removed when the last one unmounts. The most recently mounted/updated instance's options win.
 - Updates on `resize` events.
 - Returns `{ width, height }` for programmatic consumption.
 - Removed `usehooks-ts` dependency — uses a native `resize` listener.
