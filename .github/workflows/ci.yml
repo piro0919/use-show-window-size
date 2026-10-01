@@ -20,3 +20,42 @@ jobs:
       - run: pnpm typecheck
       - run: pnpm test
       - run: pnpm build:lib
+      - run: pnpm check:package
+
+  # Unit tests on every Node line the dev toolchain runs on. pnpm 11 needs
+  # Node >= 22.13 and jsdom >= 22.22.2, so Node 20 cannot run the suite.
+  node:
+    name: node ${{ matrix.node }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [22, 24]
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: ${{ matrix.node }}
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm test
+
+  # `engines` allows Node 20, so check the built package loads there through
+  # both entry points. Built on 24 because the toolchain cannot run on 20.
+  node20-load:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24.19.0
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build:lib
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 20
+      - run: node -e "const m = require('use-show-window-size'); if (typeof m.useShowWindowSize !== 'function') process.exit(1)"
+      - run: node --input-type=module -e "const m = await import('use-show-window-size'); if (typeof m.useShowWindowSize !== 'function') process.exit(1)"
