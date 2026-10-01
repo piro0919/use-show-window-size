@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased]
+## 1.1.0 - 2026-10-01
 
 > Earlier releases (0.0.1, 1.0.0, 1.0.1) were not recorded here. Their changes
 > are in the git history and on npm.

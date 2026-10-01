@@ -1,6 +1,6 @@
 {
   "name": "use-show-window-size",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "React hook that overlays the current viewport size for development.",
   "keywords": [
     "react",
