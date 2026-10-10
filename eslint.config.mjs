@@ -1,13 +1,16 @@
 import js from "@eslint/js";
+import magicNumbers from "@piro0919/eslint-config";
 import tseslint from "@typescript-eslint/eslint-plugin";
 import tsparser from "@typescript-eslint/parser";
 import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
 
+const TS_FILES = ["src/**/*.{ts,tsx}", "tests/**/*.{ts,tsx}"];
+
 export default [
   js.configs.recommended,
   {
-    files: ["src/**/*.{ts,tsx}", "tests/**/*.{ts,tsx}"],
+    files: TS_FILES,
     languageOptions: {
       parser: tsparser,
       parserOptions: {
@@ -50,5 +53,6 @@ export default [
       "react/prop-types": "off",
     },
   },
+  ...magicNumbers({ files: TS_FILES }),
   { ignores: ["dist/**", "node_modules/**", "coverage/**", ".next/**", "next-env.d.ts"] },
 ];
