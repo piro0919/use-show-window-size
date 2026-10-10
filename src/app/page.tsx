@@ -76,6 +76,14 @@ export default function Home() {
         >
           GitHub →
         </a>
+        <a
+          className="github-link"
+          href="https://buymeacoffee.com/piro0919"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Buy Me a Coffee →
+        </a>
       </div>
     </main>
   );
