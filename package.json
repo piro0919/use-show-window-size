@@ -67,8 +67,8 @@
     "@piro0919/eslint-config": "github:piro0919/eslint-config#v1.1.0",
     "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/react": "^16.3.3",
-    "@types/node": "25.9.10",
-    "@types/react": "^19.3.1",
+    "@types/node": "25.9.12",
+    "@types/react": "^19.3.3",
     "@types/react-dom": "^19.3.0",
     "@typescript-eslint/eslint-plugin": "^8.74.0",
     "@typescript-eslint/parser": "^8.74.0",
@@ -78,7 +78,7 @@
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.1.1",
     "jsdom": "^31.0.1",
-    "lefthook": "^2.2.2",
+    "lefthook": "^2.2.3",
     "next": "^16.4.6",
     "prettier": "^3.10.1",
     "publint": "^0.3.25",
@@ -86,7 +86,7 @@
     "react-dom": "^19.3.1",
     "tsup": "^9.0.0",
     "typescript": "^5.9.3",
-    "vitest": "^5.1.1"
+    "vitest": "^5.1.2"
   },
   "engines": {
     "node": ">=20.20.2"
